@@ -1,5 +1,5 @@
 import { Response } from "express";
-import { ISuccessResponseType } from "../interfaces/common/IIsAuthenticated";
+import { IErrorResponseType, ISuccessResponseType } from "../interfaces/common/IIsAuthenticated";
 
 
 export const successResponse = (

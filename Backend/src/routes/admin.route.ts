@@ -4,6 +4,6 @@ import { adminAuthController } from "../controllers/management/adminAuthControll
 const adminRouter = Router();
 // const iJwtServices: IJWTService = new JWTService()
 
-adminRouter.post('/login',adminAuthController.adminReg.bind(adminAuthController))
+adminRouter.post('/login',adminAuthController.adminLogin.bind(adminAuthController))
 
 export default adminRouter; 
