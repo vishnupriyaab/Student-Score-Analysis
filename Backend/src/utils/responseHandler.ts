@@ -1,0 +1,30 @@
+import { Response } from "express";
+import { ISuccessResponseType } from "../interfaces/common/IIsAuthenticated";
+
+
+export const successResponse = (
+  res: Response,
+  statusCode: number,
+  message: string,
+  data?: any
+) => {
+  let response: ISuccessResponseType = {
+    message,
+    success: true,
+    data: data,
+    statusCode: statusCode
+  };
+  res.status(statusCode).send(response);
+};
+
+export const ErrorResponse = (
+  res: Response,
+  statusCode: number,
+  message: string
+) => {
+  const response: IErrorResponseType = {
+    message,
+    success: false,
+  };
+  res.status(statusCode).send(response);
+};
