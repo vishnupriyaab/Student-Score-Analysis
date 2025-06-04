@@ -3,6 +3,7 @@ import { config } from "dotenv";
 import cors from "cors";
 import connectionDb from "./config/DbConnection";
 import morgan from "morgan";
+import adminRouter from "./routes/admin.route";
 config();
 
 const app = express();
@@ -21,7 +22,7 @@ app.use(morgan("dev"))
 app.use(cors({
   origin: ['http://localhost:4200']
 }))
-// app.use('/admin',adminRoute);
+app.use('/admin',adminRouter);
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
