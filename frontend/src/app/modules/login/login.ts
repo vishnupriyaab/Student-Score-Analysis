@@ -55,7 +55,9 @@ export class Login {
     this.authService.login(loginData).subscribe({
       next: (response) => {
         this.isLoading = false;
+        console.log(response, 'resposnsesesees');
         if (response.success) {
+          this.authService.setLoggedIn('true');
           this.toastr.success('Login successful!', 'Welcome');
           this.router.navigate(['/dashboard']);
         } else {
@@ -71,4 +73,24 @@ export class Login {
       },
     });
   }
+
+  onLogout() {
+    this.isLoading = true;
+
+    this.authService.logOut().subscribe({
+      next: (response) => {
+        this.isLoading = false;
+
+        this.authService.clearLoggedIn();
+
+        this.toastr.success('Logged out successfully', 'Goodbye');
+        this.router.navigate(['/login']);
+      },
+      error: (error) => {
+        this.isLoading = false;
+        console.error('Logout error:', error);
+      },
+    });
+  }
+
 }

@@ -3,7 +3,8 @@ import { provideRouter } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { routes } from './app.routes';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authenticationInterceptor } from './core/interceptors/authentication-interceptor';
 
 
 export const appConfig: ApplicationConfig = {
@@ -17,6 +18,6 @@ export const appConfig: ApplicationConfig = {
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(withInterceptors([authenticationInterceptor])),
   ]
 };

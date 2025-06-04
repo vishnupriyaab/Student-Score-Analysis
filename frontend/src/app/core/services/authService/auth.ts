@@ -13,7 +13,7 @@ export class Auth {
   private _http = inject(HttpClient);
 
   login(loginData: LoginDto): Observable<ApiResponse<string>> {
-    console.log(loginData,"111")
+    console.log(loginData, '111');
     return this._http.post<ApiResponse<string>>(`${this._baseUrl}admin/login`, {
       loginData,
     });
@@ -25,5 +25,9 @@ export class Auth {
 
   logOut(): Observable<LogOut> {
     return this._http.post<LogOut>(`${this._baseUrl}admin/logOut`, {});
+  }
+
+  clearLoggedIn() {
+    localStorage.removeItem('isLoggedIn');
   }
 }
