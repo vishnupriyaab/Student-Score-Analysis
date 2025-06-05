@@ -24,8 +24,8 @@ export class GenderChart implements OnChanges, AfterViewInit, OnDestroy {
   @Input() studentScore: StudentScore[] = [];
   @ViewChild('chartCanvas') chartCanvas!: ElementRef<HTMLCanvasElement>;
 
-  private chart: Chart | null = null;
-  private chartNeedsUpdate = false;
+  private _chart: Chart | null = null;
+  private _chartNeedsUpdate = false;
 
   genderStats = {
     female: {
@@ -54,23 +54,23 @@ export class GenderChart implements OnChanges, AfterViewInit, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['studentScore']) {
-      this._calculateGenderStats();
+      this.calculateGenderStats();
       if (this.chartCanvas) {
         this.createChart();
       } else {
-        this.chartNeedsUpdate = true;
+        this._chartNeedsUpdate = true;
       }
     }
   }
 
   ngAfterViewInit(): void {
-    if (this.chartNeedsUpdate) {
+    if (this._chartNeedsUpdate) {
       this.createChart();
-      this.chartNeedsUpdate = false;
+      this._chartNeedsUpdate = false;
     }
   }
 
-  private _calculateGenderStats() {
+  private calculateGenderStats() {
     const females = this.studentScore.filter((s) => s.gender === 'F');
     const males = this.studentScore.filter((s) => s.gender === 'M');
 
@@ -83,23 +83,17 @@ export class GenderChart implements OnChanges, AfterViewInit, OnDestroy {
     const female_0_20 = females.filter(
       (s) => s.score >= 0 && s.score <= 20
     ).length;
-    console.log(female_0_20, "fem 0 - 20")
     const female_21_40 = females.filter(
       (s) => s.score > 20 && s.score <= 40
     ).length;
-    console.log(female_21_40, "fem 21 - 40")
 
     const male_0_20 = males.filter((s) => s.score >= 0 && s.score <= 20).length;
-    console.log(male_0_20, "male 0 -20")
     const male_21_40 = males.filter(
       (s) => s.score > 20 && s.score <= 40
     ).length;
-    console.log(male_21_40, "male 21 -40")
 
     const total_0_20 = female_0_20 + male_0_20;
-    console.log(total_0_20,"total 0 to 20")
     const total_21_40 = female_21_40 + male_21_40;
-    console.log(total_21_40,"total 21 to 40")
 
     this.genderStats.female = {
       count: females.length,
@@ -107,8 +101,6 @@ export class GenderChart implements OnChanges, AfterViewInit, OnDestroy {
       min: Math.min(...femaleScores),
       max: Math.max(...femaleScores),
     };
-
-    console.log(this.genderStats.female, '1234567890');
 
     this.genderStats.male = {
       count: males.length,
@@ -130,9 +122,9 @@ export class GenderChart implements OnChanges, AfterViewInit, OnDestroy {
   }
 
   private createChart(): void {
-    if (this.chart) {
-      this.chart.destroy();
-      this.chart = null;
+    if (this._chart) {
+      this._chart.destroy();
+      this._chart = null;
     }
 
     const ctx = this.chartCanvas.nativeElement.getContext('2d');
@@ -240,12 +232,12 @@ export class GenderChart implements OnChanges, AfterViewInit, OnDestroy {
       },
     };
 
-    this.chart = new Chart(ctx, config);
+    this._chart = new Chart(ctx, config);
   }
 
   ngOnDestroy(): void {
-    if (this.chart) {
-      this.chart.destroy();
+    if (this._chart) {
+      this._chart.destroy();
     }
   }
 }
