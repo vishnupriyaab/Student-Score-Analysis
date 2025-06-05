@@ -15,7 +15,6 @@ export default class AuthMiddleware {
     next: NextFunction
   ): Promise<void> {
     try {
-        console.log(req.cookies,"123456789012345678901234567890")
       const accessToken = req.cookies.access_token;
       if (!accessToken) {
         return this.handleRefreshToken(req, res, next);

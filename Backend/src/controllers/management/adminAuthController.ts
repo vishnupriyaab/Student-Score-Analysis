@@ -12,7 +12,6 @@ export class AdminAuthController implements IAdminAuthController {
 
   async adminLogin(req: Request, res: Response): Promise<void> {
     try {
-      console.log(req.body.loginData, "wertyuiop");
       const { email, password } = req.body.loginData;
 
       if (!email || !password) {

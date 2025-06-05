@@ -17,10 +17,7 @@ export class AdminAuthServices implements IAdminAuthServices {
     password: string
   ): Promise<{ accessToken: string; refreshToken: string }> {
     try {
-      console.log(email, password, "datas");
-
       const admin = await this._adminRepo.findAdminByEmail(email);
-      console.log(admin, "admin");
       if (!admin) {
         const error = new Error("Admin not found");
         error.name = "adminNotFound";
@@ -28,7 +25,6 @@ export class AdminAuthServices implements IAdminAuthServices {
       }
       
       const isValid = await bcrypt.compare(password, admin.password);
-      console.log(isValid,"isValidddd")
       if (!isValid) {
         const error = new Error("Password is incorrect");
         error.name = "passwordIsIncorrect";
@@ -40,7 +36,6 @@ export class AdminAuthServices implements IAdminAuthServices {
       };
       const accessToken = this._IjwtSevice.generateAccessToken(payload);
       const refreshToken = this._IjwtSevice.generateRefreshToken(payload);
-      console.log(accessToken, refreshToken);
       return {
         accessToken,
         refreshToken,
