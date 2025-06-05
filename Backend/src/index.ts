@@ -2,12 +2,12 @@ import express from "express";
 import { config } from "dotenv";
 import cors from "cors";
 import connectionDb from "./config/DbConnection";
-import morgan from "morgan";
 import adminRouter from "./routes/admin.route";
+import cookieParser from "cookie-parser";
 config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 2000;
 connectionDb();
 
 app.use(express.json({limit:'100mb'}));
@@ -16,11 +16,11 @@ app.use(
     extended: true,
   })
 );
-
-app.use(morgan("dev"))
+app.use(cookieParser());
 
 app.use(cors({
-  origin: ['http://localhost:4200']
+  origin: ['http://localhost:4200'],
+  credentials:true
 }))
 app.use('/admin',adminRouter);
 

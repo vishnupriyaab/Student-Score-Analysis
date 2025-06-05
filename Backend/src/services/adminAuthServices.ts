@@ -28,6 +28,7 @@ export class AdminAuthServices implements IAdminAuthServices {
       }
       
       const isValid = await bcrypt.compare(password, admin.password);
+      console.log(isValid,"isValidddd")
       if (!isValid) {
         const error = new Error("Password is incorrect");
         error.name = "passwordIsIncorrect";

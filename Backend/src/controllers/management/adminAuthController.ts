@@ -74,7 +74,7 @@ export class AdminAuthController implements IAdminAuthController {
         });
 
       return successResponse(res, 200, "Admin logged out successfully");
-    } catch (error) {
+    } catch (error:unknown) {
       return ErrorResponse(res, 500, "Error during logout");
     }
   }
