@@ -9,8 +9,10 @@ export const authGuard: CanActivateFn = (route, state) => {
   const toastr = inject(ToastrService);
 
   if (authService.isLoggedIn()) {
+    console.log("111")
     return true;
   } else {
+    console.log("222")
     toastr.warning('Please login to access this page', 'Access Denied');
     router.navigate(['/']);
     return false;

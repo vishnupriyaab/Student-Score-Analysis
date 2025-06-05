@@ -53,7 +53,7 @@ export class GenderChart implements OnChanges, AfterViewInit, OnDestroy {
   };
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['studentScore']) {
+      if (changes['studentScore']) {
       this.calculateGenderStats();
       if (this.chartCanvas) {
         this.createChart();

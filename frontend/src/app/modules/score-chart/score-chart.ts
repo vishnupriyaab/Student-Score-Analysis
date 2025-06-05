@@ -9,7 +9,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Chart, ChartConfiguration, ChartType, registerables } from 'chart.js';
+import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { ScoreStatItem, StudentScore } from '../../core/models/studentScore';
 
 Chart.register(...registerables);
