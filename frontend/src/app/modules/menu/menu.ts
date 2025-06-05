@@ -18,7 +18,6 @@ export class Menu {
   onLogout() {
     this.authService.logOut().subscribe({
       next: (response) => {
-        console.log(response, 'resposneee');
         this.authService.clearLoggedIn();
 
         this.toastr.success('Logged out successfully', 'Goodbye');

@@ -51,7 +51,6 @@ export class Login {
 
     this.authService.login(loginData).subscribe({
       next: (response) => {
-        console.log(response, 'resposnsesesees');
         if (response.success) {
           this.authService.setLoggedIn('true');
           this.toastr.success('Login successful!', 'Welcome');
@@ -61,7 +60,6 @@ export class Login {
         }
       },
       error: (error) => {
-        console.log(error,"errorr")
         this.toastr.error(
           error.error?.message || 'An error occurred during login',
           'Error'
