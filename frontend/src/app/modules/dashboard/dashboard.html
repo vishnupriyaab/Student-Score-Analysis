@@ -2,8 +2,8 @@
     <app-menu></app-menu>
     <div class="flex-1 items-center justify-center min-h-screen ">
         <div class="flex flex-wrap justify-center gap-8 w-full max-w-full py-10">
-            <div><app-gender-chart></app-gender-chart></div>
-            <div><app-score-chart></app-score-chart></div>
+            <div><app-gender-chart [studentScore]="studentScoresList"></app-gender-chart></div>
+            <div><app-score-chart [studentScores]="studentScoresList"></app-score-chart></div>
         </div>
     </div>
 </div>

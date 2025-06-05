@@ -1,28 +1,32 @@
 <div class="w-full bg-white rounded-lg shadow-lg p-6">
-  <!-- Chart Container -->
   <div class="relative w-full max-w-lg h-64 mb-6">
     <canvas #chartCanvas class="w-full h-full"></canvas>
   </div>
-  
-  <!-- Statistics Section -->
+
   <div class="grid grid-cols-2 gap-8 pt-2 border-t border-gray-200">
-    <!-- Female Students Stats -->
     <div class="space-y-2">
       <h3 class="text-md font-normal text-gray-800">Female Students</h3>
-      <p class="text-sm text-gray-600">Count: 16</p>
+      <p class="text-sm text-gray-600">Count: {{ genderStats.female.count }}</p>
       <div class="mt-2 space-y-1">
-        <p class="text-sm text-gray-700">Avg Score: 35.31/40</p>
-        <p class="text-sm text-gray-700">Range: 23 - 40</p>
+        <p class="text-sm text-gray-700">
+          Avg Score: {{genderStats.female.avg}}/40
+        </p>
+        <p class="text-sm text-gray-700">
+          Range: {{genderStats.female.min}} - {{genderStats.female.max}}
+        </p>
       </div>
     </div>
-    
-    <!-- Male Students Stats -->
+
     <div class="space-y-2">
       <h3 class="text-md font-normal text-gray-800">Male Students</h3>
-      <p class="text-sm text-gray-600">Count: 5</p>
+      <p class="text-sm text-gray-600">Count: {{ genderStats.male.count }}</p>
       <div class="mt-2 space-y-1">
-        <p class="text-sm text-gray-700">Avg Score: 32.20/40</p>
-        <p class="text-sm text-gray-700">Range: 18-39</p>
+        <p class="text-sm text-gray-700">
+          Avg Score: {{ genderStats.male.avg }}/40
+        </p>
+        <p class="text-sm text-gray-700">
+          Range: {{ genderStats.male.min }} - {{ genderStats.male.max }}
+        </p>
       </div>
     </div>
   </div>
