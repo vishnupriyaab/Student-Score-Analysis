@@ -10,10 +10,6 @@ export const authenticationInterceptor: HttpInterceptorFn = (req, next) => {
   const toastr = inject(ToastrService);
   const authService = inject(Auth);
 
-  if (req.url.includes('login')) {
-    return next(req);
-  }
-
   const authReq = req.clone({
     withCredentials: true 
   });
@@ -22,7 +18,6 @@ export const authenticationInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((error: HttpErrorResponse) => {
       if (error.status === 401) {
         authService.clearLoggedIn();
-        router.navigate(['/login']);
         toastr.error('Session expired. Please login again.', 'Error');
       }
       

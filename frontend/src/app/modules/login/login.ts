@@ -21,7 +21,6 @@ import { LoginDto } from '../../dtos/login.dto';
 })
 export class Login {
   loginForm: FormGroup;
-  isLoading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -45,8 +44,6 @@ export class Login {
       return;
     }
 
-    this.isLoading = true;
-
     const loginData: LoginDto = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
@@ -54,7 +51,6 @@ export class Login {
 
     this.authService.login(loginData).subscribe({
       next: (response) => {
-        this.isLoading = false;
         console.log(response, 'resposnsesesees');
         if (response.success) {
           this.authService.setLoggedIn('true');
@@ -66,7 +62,6 @@ export class Login {
       },
       error: (error) => {
         console.log(error,"errorr")
-        this.isLoading = false;
         this.toastr.error(
           error.error?.message || 'An error occurred during login',
           'Error'
@@ -75,23 +70,6 @@ export class Login {
     });
   }
 
-  onLogout() {
-    this.isLoading = true;
 
-    this.authService.logOut().subscribe({
-      next: (response) => {
-        this.isLoading = false;
-
-        this.authService.clearLoggedIn();
-
-        this.toastr.success('Logged out successfully', 'Goodbye');
-        this.router.navigate(['/login']);
-      },
-      error: (error) => {
-        this.isLoading = false;
-        console.error('Logout error:', error);
-      },
-    });
-  }
 
 }

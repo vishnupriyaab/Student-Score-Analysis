@@ -38,4 +38,8 @@ export class Auth {
   clearLoggedIn() {
     localStorage.removeItem('isLoggedIn');
   }
+
+  isLoggedIn(): boolean {
+    return localStorage.getItem('isLoggedIn') === 'true';
+  }
 }
