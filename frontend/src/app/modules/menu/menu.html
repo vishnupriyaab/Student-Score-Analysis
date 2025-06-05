@@ -1,9 +1,13 @@
-<div class="h-full bg-blue-100 lg:w-64 w-10 flex flex-col justify-between items-center pt-4">
-  <h5 class="fixed z-20 font-bold">Machine Task</h5>
+<div class="h-full bg-blue-100 w-16 lg:w-64 flex flex-col justify-between items-center pt-4">
+  <h5 class="fixed z-20 font-bold">
+    <span class="hidden lg:inline">Machine Task</span>
+    <span class="lg:hidden">MT</span>
+  </h5>
 
   <button 
     (click)="onLogout()" 
-    class="fixed z-20 bottom-5 md:bottom-10 rounded-xl bg-blue-400 hover:bg-red-600 opacity-75 hover:opacity-100 p-2 md:p-3 w-[40px] md:w-[66px] shadow-lg transition-all text-white text-xs">
-    Logout
+    class="fixed z-20 bottom-5 md:bottom-10 rounded-xl bg-blue-400 hover:bg-red-600 opacity-75 hover:opacity-100 p-2 md:p-3 w-10 md:w-16 shadow-lg transition-all text-white text-xs">
+    <span class="hidden md:inline">Logout</span>
+    <span class="md:hidden">Out</span>
   </button>
 </div>
