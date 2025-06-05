@@ -14,9 +14,13 @@ export class Auth {
 
   login(loginData: LoginDto): Observable<ApiResponse<string>> {
     console.log(loginData, '111');
-    return this._http.post<ApiResponse<string>>(`${this._baseUrl}admin/login`, {
-      loginData,
-    });
+    return this._http.post<ApiResponse<string>>(
+      `${this._baseUrl}admin/login`,
+      {
+        loginData,
+      },
+      { withCredentials: true }
+    );
   }
 
   setLoggedIn(status: string) {
@@ -24,7 +28,11 @@ export class Auth {
   }
 
   logOut(): Observable<LogOut> {
-    return this._http.post<LogOut>(`${this._baseUrl}admin/logOut`, {});
+    return this._http.post<LogOut>(
+      `${this._baseUrl}admin/logOut`,
+      {},
+      { withCredentials: true }
+    );
   }
 
   clearLoggedIn() {

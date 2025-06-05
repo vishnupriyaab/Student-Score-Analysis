@@ -65,6 +65,7 @@ export class Login {
         }
       },
       error: (error) => {
+        console.log(error,"errorr")
         this.isLoading = false;
         this.toastr.error(
           error.error?.message || 'An error occurred during login',
