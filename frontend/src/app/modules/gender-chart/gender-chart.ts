@@ -143,7 +143,7 @@ export class GenderChart implements OnChanges, AfterViewInit, OnDestroy {
           backgroundColor: '#8B7DD8',
           borderColor: '#8B7DD8',
           borderWidth: 1,
-          barThickness: 60,
+          barThickness: 40,
         },
         {
           label: 'Male',
@@ -151,7 +151,7 @@ export class GenderChart implements OnChanges, AfterViewInit, OnDestroy {
           backgroundColor: '#6BB6A3',
           borderColor: '#6BB6A3',
           borderWidth: 1,
-          barThickness: 60,
+          barThickness: 40,
         },
       ],
     };
