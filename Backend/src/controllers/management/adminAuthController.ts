@@ -23,8 +23,6 @@ export class AdminAuthController implements IAdminAuthController {
         password
       );
 
-      console.log(accessToken, refreshToken, "ghjuio");
-
       res
         .cookie("refresh_token", refreshToken, {
           httpOnly: true,
