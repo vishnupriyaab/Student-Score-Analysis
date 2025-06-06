@@ -1,7 +1,6 @@
 import { Response } from "express";
 import { IErrorResponseType, ISuccessResponseType } from "../interfaces/common/IIsAuthenticated";
 
-
 export const successResponse = (
   res: Response,
   statusCode: number,

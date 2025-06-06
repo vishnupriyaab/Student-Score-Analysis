@@ -44,7 +44,4 @@ export class JWTService implements IJWTService {
     }
   }
 
-  // decodeToken(token: string): JWTPayload | null {
-  //   return jwt.decode(token) as JWTPayload | null;
-  // }
 }
